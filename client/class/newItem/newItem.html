@@ -1,0 +1,152 @@
+<template name="newItem">
+	<!-- New Section -->
+   <div class="modal fade" id="newSectionModal{{_id}}" role="dialog">
+    	<div class="modal-dialog">
+      		<div class="modal-content">
+        		<div class="modal-body">
+          			<div id="expand-profile" class="container-fluid">
+         				 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           				<div class="row">
+            				<div class="col-xs-8 col-xs-offset-2">
+      							<form id="newSectionForm" class="form-horizontal">	
+            						<div class="form-group">
+          								<label for="sectionName" class="control-label col-xs-2">Section Name </label>
+          								<div class="col-xs-10">
+            								<input id="sectionName" class="form-control" type="text">
+          								</div>
+       								  </div>
+                        <div class="form-group">
+                          <label for="sectionContent" class="control-label col-xs-2">Section Content </label>
+                          <div class="col-xs-10">
+                            <input id="sectionContent" class="form-control" type="text">
+                          </div>
+                        </div>
+       								  <div class="form-group">
+          								<div class="col-xs-8 col-xs-offset-2">
+            								<button id="submitSection" class="btn btn-default" data-toggle="modal" data-target="#newSectionModal{{_id}}">Submit</button>
+         								  </div>
+        							  </div>
+            				</form>
+            				</div>
+          				</div>
+        			</div>
+      			</div>
+    		</div>
+  		</div>
+	</div>
+
+
+
+    <!-- New Subsection -->
+   <div class="modal fade" id="newSubsectionModal{{_id}}" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+                <div id="expand-profile" class="container-fluid">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                    <form id="newSubsectionForm" class="form-horizontal">  
+                        <div class="form-group">
+                          <label for="subsectionName" class="control-label col-xs-2">Subsection Name </label>
+                          <div class="col-xs-10">
+                            <input id="subsectionName" class="form-control" type="text">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="subsectionContent" class="control-label col-xs-2">Subsection Content </label>
+                          <div class="col-xs-10">
+                            <input id="subsectionContent" class="form-control" type="text">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-xs-8 col-xs-offset-2">
+                            <button id="submitSubsection" class="btn btn-default" data-toggle="modal" data-target="#newSubsectionModal{{_id}}">Submit</button>
+                          </div>
+                        </div>
+                    </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+
+      <!-- New Note -->
+   <div class="modal fade" id="newNoteModal{{_id}}" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+                <div id="expand-profile" class="container-fluid">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                    <form id="newNoteForm" class="form-horizontal">  
+                        <div class="form-group">
+                          <label for="noteContent" class="control-label col-xs-2">Note </label>
+                          <div class="col-xs-10">
+                            <textarea rows="4" cols="50" id="noteContent" class="form-control" form="newNoteForm"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-xs-8 col-xs-offset-2">
+                            <button id="submitNote" class="btn btn-default" data-toggle="modal" data-target="#newNoteModal{{_id}}">Submit</button>
+                          </div>
+                        </div>
+                    </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+
+    <!-- New Subnote -->
+   <div class="modal fade" id="newSubnoteModal{{_id}}" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+                <div id="expand-profile" class="container-fluid">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                    <form id="newSubnoteForm" class="form-horizontal">  
+                        <div class="form-group">
+                          <label for="subnoteContent" class="control-label col-xs-2">Subnote </label>
+                          <div class="col-xs-10">
+                            <textarea rows="4" cols="50" id="subnoteContent" class="form-control" form="newSubnoteForm"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-xs-8 col-xs-offset-2">
+                            <button id="submitSubnote" class="btn btn-default" data-toggle="modal" data-target="#newSubnoteModal{{_id}}">Submit</button>
+                          </div>
+                        </div>
+                    </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+
+		<div class="dropdown">
+  			<a data-toggle="dropdown" class="dropdown-toggle"><h2>+</h2></a>
+  			<ul class="dropdown-menu">
+   				<li><a data-toggle="modal" data-target="#newSectionModal{{_id}}">Section</a></li>
+          <li><a data-toggle="modal" data-target="#newSubsectionModal{{_id}}">Subsection</a></li>
+          <li><a data-toggle="modal" data-target="#newNoteModal{{_id}}">Note</a></li>
+          <li><a data-toggle="modal" data-target="#newSubnoteModal{{_id}}">Subnote</a></li>
+  			</ul>
+		</div>
+
+</template>

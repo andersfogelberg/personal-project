@@ -1,0 +1,29 @@
+<template name="section">
+	{{#with this}}
+	{{#if isExpanded}}
+		<hr>
+	{{/if}}
+	<div class="row">
+		<div class="col-xs-1 new-item">
+			{{> newItem }}
+		</div>
+		<div class="col-xs-10">
+			<h2><a id="collapse">{{collapse}}</a> <div class="underlined same-line">{{name}}</div>: {{content}}</h2>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+	<div class="container-fluid">
+	{{#if isExpanded}}
+	{{#each loop _id}}
+
+
+			{{> subsection}}
+
+	
+	{{/each}}
+	<hr>
+	{{/if}}
+	</div>
+
+	{{/with}}
+</template>

@@ -1,0 +1,24 @@
+<template name="subsection">
+	{{#with this}}
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-1">
+			{{> newItem }}
+		</div>
+		<div class="col-xs-10 subsection">
+			<h4><a id="subsection-collapse">{{collapse}}</a> <div class="underlined same-line">{{name}}</div>: {{content}}</h4>
+		</div>
+	</div>
+	<div class="container-fluid">
+		{{#if isExpanded}}
+			{{#each loop _id}}
+
+
+				{{> note}}
+
+	
+			{{/each}}
+		{{/if}}
+	</div>
+	{{/with}}
+</template>

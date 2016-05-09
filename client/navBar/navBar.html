@@ -1,0 +1,25 @@
+<template name="navBar">
+        <nav class="navbar navbar-inverse navbar-fixed-top blackground">
+         <div class="container-fluid">
+             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                     
+                </button>
+                <a class="navbar-brand" href="{{pathFor route='home'}}">BukeNotes</a>
+             </div>
+             <div class="collapse navbar-collapse" id="myNavbar">
+                {{#if currentUser}}
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a  class="hyper-nav" href="{{pathFor route='userClasses'}}" >My Classes</a></li>
+                        <li><a class="hyper-nav" href="{{pathFor route='searchSchool'}}">Search Classes</a></li> 
+                    </ul>
+                {{/if}}
+                <ul class="nav navbar-nav navbar-right">
+                    {{> loginButtons}}    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>

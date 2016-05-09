@@ -1,0 +1,10 @@
+
+.subsection {
+	margin-top: 18px;
+}
+
+#subsection-collapse {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}

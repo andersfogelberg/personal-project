@@ -1,0 +1,19 @@
+<template name="searchSchool">
+	<nav>{{ >yield "navbar"}}</nav>
+	<div class="schoolSearch container-fluid">
+		<div class="row">
+				<div class="col-sm-12">
+					<a class="newClass" href="../newSchoolForm"><h5>+AddSchool+</h5></a>
+				</div>
+		</div>
+		<div class="row">
+			{{#each schools}}
+				<div class="col-sm-12">
+					{{#with this}}
+					<a href="./searchClasses/{{_id}}"><h5>{{name}}</h5></a>
+					{{/with}}
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</template>

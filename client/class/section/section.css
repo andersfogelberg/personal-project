@@ -1,0 +1,12 @@
+.new-item {
+	text-align: center;
+}
+.same-line{
+	display: inline-block;
+}
+
+#collapse {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}

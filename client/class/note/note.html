@@ -1,0 +1,27 @@
+<template name="note">
+	{{#with this}}
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-1">
+			{{> newItem }} 
+		</div>
+		<div class="col-xs-7 note">
+			<p>{{content}}</p>
+		</div>
+		<div class="col-xs-3"></div>
+	</div>
+
+		<div class="container-fluid">
+
+			{{#each loop _id}}
+
+
+				{{> subnote}}
+
+	
+			{{/each}}
+
+	</div>
+
+	{{/with}}
+</template>
