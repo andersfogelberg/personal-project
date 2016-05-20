@@ -1,10 +1,24 @@
 /* CSS declarations go here */
 body{
-	font-family: "Times New Roman", Georgia, Serif;
+	font-family: 'Just Another Hand', Helvetica, Sans-serif;
+	letter-spacing: 3px;
 	color: black;
+	background-image: url("lines_paper_by_ginnyhaha_stock.jpg");
+	background-repeat: repeat;
+	background-size: 100%;
 }
 
 
 .underlined{
 	text-decoration: underline;
 }
+
+.btn {
+	background-image: url('blue-scribble.png');
+	background-size: 100%;
+	font-family: 'Just Another Hand', Helvetica, Sans-serif;
+}
+/*.commentsBar {
+	background-image: url('black-scribble.png') !important;
+	background-size: 100%;
+}*/

@@ -1,0 +1,66 @@
+<template name="comment">
+	<div class="col-xs-2" id="left-column"></div>
+	<div class="col-xs-8 comments comment-container" id="center-column">
+		{{#each comments}}
+
+			  <!-- New Comment modal -->
+		   	<div class="modal fade" id="newSubCommentModal{{_id}}" role="dialog">
+		      	<div class="modal-dialog">
+		          	<div class="modal-content">
+		            	<div class="modal-body">
+		                	<div id="expand-profile" class="container-fluid">
+		                 		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                  		<div class="row">
+		                    		<div class="col-xs-8 col-xs-offset-2">
+		                    			<form id="newSubCommentForm" class="form-horizontal">  
+		                        			<div class="form-group">
+		                          				<label for="subCommentContent" class="control-label col-xs-2">Comment</label>
+		                          				<div class="col-xs-10">
+		                            				<textarea rows="4" cols="50" id="subCommentContent{{_id}}" class="form-control" form="newSubCommentForm"></textarea>
+		                          				</div>
+		                        			</div>
+		                        			<div class="form-group">
+		                          				<div class="col-xs-8 col-xs-offset-2">
+		                            				<button id="submitSubComment" class="btn btn-default" data-toggle="modal" data-target="#newSubCommentModal{{_id}}">Submit</button>
+		                          				</div>
+		                        			</div>
+		                    			</form>
+		                    		</div>
+		                  		</div>
+		              		</div>
+		            	</div>
+		        	</div>
+		      	</div>
+		  	</div>
+
+			<div class="comment">
+				<h4>{{createdBy.email}}:</h4>
+				<p>
+					{{#if createdByUser}}
+						<a id="delete-comment" title="delete comment"> - </a>
+					{{/if}}
+					{{content}}
+				</p>	
+				<button id="newSubComment" class="btn btn-default" data-toggle="modal" data-target="#newSubCommentModal{{_id}}">respond</button>
+				<hr>
+				{{#each subComments}}
+					<div class="subComment">
+						<h5>{{createdBy.email}}:</h5>
+						<p>
+							{{#if createdByUser}}
+								<a id="delete-subcomment" title="delete comment"> - </a>
+							{{else}}
+								{{#if responseToUser}}
+									<a id="delete-subcomment" title="delete comment"> - </a>
+								{{/if}}
+							{{/if}}
+							{{content}}
+						</p>
+						<hr>	
+					</div>
+				{{/each}}
+			</div>
+		{{/each}}
+	</div>
+	<div class="col-xs-2" id="right-column"></div>
+</template>

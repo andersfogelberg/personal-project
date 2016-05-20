@@ -1,0 +1,44 @@
+#comment-toggle {
+	padding: 5px;
+	margin-right: 20px;
+	border-style: solid;
+	border-width: 1px;
+	float: right;
+	margin-right: 15px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.commentsBar {
+	margin-top: 25px;
+}
+
+#left-filler, #right-filler, #post-comment {
+	height: 50px;
+}
+
+#buffer {
+	margin-bottom: 25px;
+}
+
+.unansweredComments{
+	border-radius: 50px 50px 50px 50px;
+	border-width: 1em;
+	background-color: red;
+	color: white;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.comment-container{
+	background-color: white;
+	background-image: none;
+	padding-top:10px;
+}
+/*.post-button-container {
+	position: relative;
+}*/
+#newComment {
+	font-family: 'Source Code Pro' !important;
+}

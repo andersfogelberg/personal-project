@@ -8,18 +8,21 @@
 			{{> newItem }}
 		</div>
 		<div class="col-xs-10">
-			<h2><a id="collapse">{{collapse}}</a> <div class="underlined same-line">{{name}}</div>: {{content}}</h2>
+			<h2>
+				<a id="collapse">{{collapse}}</a> <div class="underlined same-line">{{name}}</div>: {{content}}
+				{{#if createdByUser}}
+					{{#with log}}
+						{{> deleteItem }}
+					{{/with}}
+				{{/if}}
+			</h2>
 		</div>
 		<div class="col-xs-1"></div>
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid no-margins">
 	{{#if isExpanded}}
 	{{#each loop _id}}
-
-
 			{{> subsection}}
-
-	
 	{{/each}}
 	<hr>
 	{{/if}}

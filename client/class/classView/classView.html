@@ -1,13 +1,16 @@
 <template name="courseView">
 <nav>{{ >yield "navbar"}}</nav>
 {{#with course}}
+	<div class="container-fluid course-container">
 	<div class="container-fluid class-info">
 		<div class="row">
 			<div class="col-xs-1"></div>
 			<div class="col-xs-10">
 				<h1 class="underlined">{{ name }}</h1>
-				<p>Instructor: <a href="{{instructor.page}}">{{instructor.name}}</a></p>
-				<p><button type="button" id="addToUserClasses"><h5>Add To Classes</h5></button></p>
+				<h3>Instructor: <a href="{{instructor.page}}">{{instructor.name}}</a></h3>
+				{{#if isNotUserClass}}
+					<p><button class="btn btn-default" id="addToUserClasses"><h5>Add To Classes</h5></button></p>
+				{{/if}}
 			</div>	
 			<div class="col-xs-1"></div>
 		</div>
@@ -26,6 +29,7 @@
 			{{> section}}
 	{{/each}}
 	
+	</div>
 	</div>
 {{/with}}
 </template>

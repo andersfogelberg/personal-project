@@ -1,5 +1,10 @@
 .note {
 	margin-top: 25px;
 	border-left: solid;
+	font-family: 'Source Code Pro' !important;
 }
 
+.no-margins {
+	padding: 0;
+	margin: 0;
+}

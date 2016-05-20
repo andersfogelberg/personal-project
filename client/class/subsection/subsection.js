@@ -25,11 +25,20 @@ Template.subsection.helpers ({
     	let id = itemId;
       	let notes = [];
       	for(i=0; i<Items.find({'type':"note"},{'parent':itemId}).count();i++){
-        	id = Items.findOne({'_id':id}).children.note;
+      		if(Items.findOne({'_id':id}).children.note != null){
+        		id = Items.findOne({'_id':id}).children.note;
           		notes.push(Items.findOne({'_id':id}));
+          	}
      	}
       	return notes;
     },
+    'createdByUser': function(){
+      if(this.createdBy === Meteor.userId()){
+        return true;
+      } else{
+        return false;
+      }
+    }
 });
 
 Template.subsection.events ({

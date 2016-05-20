@@ -38,7 +38,9 @@ Meteor.methods({
         if(childType=='section'){
           let oldChild = Items.findOne({'_id': itemId}).children.section;
           Items.update({'_id': itemId}, {'$set': {'children.section': childId}}, {'upsert': true});
+          Items.update({'_id':childId}, {'$set' : {'parent': itemId}}, {'upsert': true});
           Items.update({'_id': childId}, {'$set':{'children.section':oldChild}}, {'upsert': true});
+          Items.update({'_id':oldChild}, {'$set': {'parent': childId}}, {'upsert': true});
         }
         else if(childType == 'subsection'){
           let oldChild = Items.findOne({'_id': itemId}).children.subsection;
@@ -61,6 +63,31 @@ Meteor.methods({
       }
     },
 
+    'reverseUpdateChildren': function(itemId, parentId, childId) {
+      let itemType = Items.findOne({'_id':itemId}).type;
+      try{
+        if(itemType === 'section'){
+          Items.update({'_id': parentId}, {'$set': {'children.section': childId}}, {'upsert': true});
+          Items.update({'_id': childId}, {'$set':{'parent':parentId}}, {'upsert': true});
+        }
+        else if(itemType === 'subsection'){
+          Items.update({'_id': parentId}, {'$set': {'children.subsection': childId}}, {'upsert': true});
+          Items.update({'_id': childId}, {'$set':{'parent':parentId}}, {'upsert': true});
+        }
+        else if(itemType === 'note'){
+          Items.update({'_id': parentId}, {'$set': {'children.note': childId}}, {'upsert': true});
+          Items.update({'_id': childId}, {'$set':{'parent':parentId}}, {'upsert': true});
+        }
+        else if(itemType === 'subnote'){
+          Items.update({'_id': parentId}, {'$set': {'children.subnote': childId}}, {'upsert': true});
+          Items.update({'_id': childId}, {'$set':{'parent':parentId}}, {'upsert': true});
+        }
+      }
+      catch( exception ) {
+          return exception;
+      }  
+    },
+
     'updateSchoolClasses': function(schoolId, classId){
       try{
         Items.update({'_id':schoolId},{'$push' : {'children' : classId}});
@@ -68,20 +95,53 @@ Meteor.methods({
       catch(exception){
         return exception;
       }
-    }
+    },
 
-    /*'loop': function(itemId){
-    let pointer = Items.findOne({'_id':itemId});
-      let sections = [pointer];
-      for(i=0; i<Items.find({'type':"section"}).count();i++){
-        if( typeof Items.findOne({'_id': pointer._id}) != 'undefined'){
-          pointer = Items.findOne({'_id':pointer._id}).children.section;
-          sections.push(Items.findOne({'_id':pointer}));
-        }
-
+    'addComment': function( comment ){
+      try {
+          let commentId = Comments.insert( comment );
+          return commentId;
+      } 
+      catch( exception ) {
+          return exception;
       }
-      return sections;
-    },*/
+    },
+
+    'removeComments': function(commentId){
+      try{
+        Comments.remove({'_id': commentId});
+      }
+      catch(exception){
+        return exception;
+      }
+    },
+
+    'removeSubcomments': function(parentId){
+      try{
+        Comments.remove({'parent': parentId});
+      }
+      catch(exception){
+        return exception;
+      }
+    },
+
+    'removeItem': function(itemId){
+      try{
+        Items.remove({'_id':itemId});
+      }
+      catch(exception){
+        return exception;
+      }
+    },
+
+    'updateCommentChildren': function(commentId, childId){
+      try{
+        Comments.update({'_id':commentId},{'$push': {'children': childId}});
+      }
+      catch(error) {
+        return(error);
+      }
+    },
 
 
    });

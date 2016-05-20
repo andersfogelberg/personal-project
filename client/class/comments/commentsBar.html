@@ -1,0 +1,53 @@
+<template name = "commentsBar">
+
+	   <!-- New Comment modal -->
+   <div class="modal fade" id="newCommentModal{{_id}}" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+                <div id="expand-profile" class="container-fluid">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                    <form id="newCommentForm" class="form-horizontal">  
+                        <div class="form-group">
+                          <label for="commentContent" class="control-label col-xs-2">Comment</label>
+                          <div class="col-xs-10">
+                            <textarea rows="4" cols="50" id="commentContent" class="form-control" form="newCommentForm"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-xs-8 col-xs-offset-2">
+                            <button id="submitComment" class="btn btn-default" data-toggle="modal" data-target="#newCommentModal{{_id}}">Submit</button>
+                          </div>
+                        </div>
+                    </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+	<div class = "commentsBar">
+		<a id="comment-toggle">
+			Comments
+			<h4 class='unansweredComments'> {{numUnanswered}} </h4>
+		</a>
+	</div>
+	<div class="container-fluid post-button-container">
+		{{#if isExpanded}}
+			<div class="col-xs-12" id="buffer"></div>
+			<div class="col-xs-2" id="left-filler"></div>
+			<div class="col-xs-8 comment-container" id="post-comment">
+				<button id="newComment" class="btn btn-default" data-toggle="modal" data-target="#newCommentModal{{_id}}">Post Comment</button>
+			</div>
+			<div class="col-xs-2" id="right-filler"></div>
+			{{#with this}}
+				{{> comment}}
+			{{/with}}
+		{{/if}}
+	</div>
+</template>

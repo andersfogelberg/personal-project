@@ -26,11 +26,24 @@ Template.section.helpers ({
     	let id = itemId;
       	let subsections = [];
       	for(i=0; i<Items.find({'type':"subsection"},{'parent':itemId}).count();i++){
-        	id = Items.findOne({'_id':id}).children.subsection;
+      		if(Items.findOne({'_id':id}).children.subsection != null){
+        		id = Items.findOne({'_id':id}).children.subsection;
+        		console.log(id);
           		subsections.push(Items.findOne({'_id':id}));
+          	}
      	}
       	return subsections;
     },
+    'createdByUser': function(){
+      console.log(this.createdBy);
+      console.log(Meteor.userId());
+      if(this.createdBy === Meteor.userId()){
+        console.log('true');
+        return true;
+      } else{
+        return false;
+      }
+    }
 });
 
 Template.section.events ({

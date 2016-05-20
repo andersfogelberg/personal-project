@@ -142,10 +142,33 @@
 		<div class="dropdown">
   			<a data-toggle="dropdown" class="dropdown-toggle"><h2>+</h2></a>
   			<ul class="dropdown-menu">
-   				<li><a data-toggle="modal" data-target="#newSectionModal{{_id}}">Section</a></li>
+          {{#if typeIsClass}}
+            <li><a data-toggle="modal" data-target="#newSectionModal{{_id}}">Section</a></li>
+          {{else}}
+            {{#if typeIsSection}}
+              <li><a data-toggle="modal" data-target="#newSectionModal{{_id}}">Section</a></li>
+              <li><a data-toggle="modal" data-target="#newSubsectionModal{{_id}}">Subsection</a></li>
+            {{else}}
+              {{#if typeIsSubsection}}
+                <li><a data-toggle="modal" data-target="#newSubsectionModal{{_id}}">Subsection</a></li>
+                <li><a data-toggle="modal" data-target="#newNoteModal{{_id}}">Note</a></li>
+              {{else}}
+                {{#if typeIsNote}}
+                  <li><a data-toggle="modal" data-target="#newNoteModal{{_id}}">Note</a></li>
+                  <li><a data-toggle="modal" data-target="#newSubnoteModal{{_id}}">Subnote</a></li>
+                {{else}}
+                  {{#if typeIsSubnote}}
+                    <li><a data-toggle="modal" data-target="#newSubnoteModal{{_id}}">Subnote</a></li>
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            {{/if}}
+          {{/if}}      
+
+   				<!-- <li><a data-toggle="modal" data-target="#newSectionModal{{_id}}">Section</a></li>
           <li><a data-toggle="modal" data-target="#newSubsectionModal{{_id}}">Subsection</a></li>
           <li><a data-toggle="modal" data-target="#newNoteModal{{_id}}">Note</a></li>
-          <li><a data-toggle="modal" data-target="#newSubnoteModal{{_id}}">Subnote</a></li>
+          <li><a data-toggle="modal" data-target="#newSubnoteModal{{_id}}">Subnote</a></li> -->
   			</ul>
 		</div>
 

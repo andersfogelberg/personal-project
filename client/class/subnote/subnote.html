@@ -7,11 +7,16 @@
 		</div>
 		<div class="col-xs-6 subnote">
 			<p>{{content}}</p>
+			{{#if createdByUser}}
+				{{#with log}}
+					{{> deleteItem }}
+				{{/with}}
+			{{/if}}
 		</div>
-		<div class="col-xs-3"></div>
+		{{#with log}}
+			{{> commentsBar }}
+			{{test}}
+		{{/with}}
 	</div>
-
-
-	
 	{{/with}}
 </template>

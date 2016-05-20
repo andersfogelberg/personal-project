@@ -10,14 +10,15 @@ Template.newClassForm.events ({
 		event.preventDefault();
 
 		let course = {
-			type : "class",
-			name : template.find('#courseName').value,
-			instructor : {name : template.find('#courseInstructor').value,
+			'type' : "class",
+			'name' : template.find('#courseName').value,
+			'instructor' : {name : template.find('#courseInstructor').value,
 						page : template.find('#instructorPage').value},
-			children : {},
-			'createdBy' : Meteor.userId()
+			'semester' : template.find('#semester').value,
+			'children' : {},
+			'createdBy' : Meteor.userId(),
+			'parent' : Router.current().params.schoolId
 		}
-		console.log(Items.findOne({'_id':Router.current().params.schoolId}).children);
 
 		Meteor.call( 'addItem', course, (error, data) => {
       		if(error){

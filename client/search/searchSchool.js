@@ -4,7 +4,7 @@ Template.searchSchool.onCreated( function() {
 
 Template.searchSchool.helpers({
 	'schools' : function(){
-		let school = Items.find({'type':"school"}).fetch();
+		let school = Items.find({'type':"school"},{sort:{'name':1}}).fetch();
 		console.log(school);
     	return school;
   	},

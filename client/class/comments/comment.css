@@ -1,0 +1,24 @@
+.comments {
+	padding-top: 10px;
+}
+
+.comment {
+	padding-top: 5px;
+	line-height: 0;
+	font-family: 'Source Code Pro' !important;
+}
+
+.subComment {
+	padding-left: 50px;
+	line-height: 0;
+	font-family: 'Source Code Pro' !important;
+}
+
+#delete-comment, #delete-subcomment {
+	font-size: 300%;
+	cursor: pointer;
+	padding-top: 10px;
+	text-decoration: none;
+}
+
+

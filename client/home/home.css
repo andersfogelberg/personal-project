@@ -1,8 +1,15 @@
 .home-welcome {
   text-align: center;
-  padding-top: 150px;
+  margin-top: 150px;
 }
 
 .home-welcome h1 {
   font-size: 64px;
+}
+
+.home {
+	height: 100vh;
+	background-image: url('lines_paper_by_ginnyhaha_stock.jpg');
+	background-size: 100%;
+	background-repeat: repeat;
 }

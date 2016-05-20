@@ -7,21 +7,20 @@
 		</div>
 		<div class="col-xs-7 note">
 			<p>{{content}}</p>
+			{{#if createdByUser}}
+				{{#with log}}
+					{{> deleteItem }}
+				{{/with}}
+			{{/if}}
 		</div>
-		<div class="col-xs-3"></div>
+		{{#with log}}
+			{{> commentsBar }}
+		{{/with}}
 	</div>
-
-		<div class="container-fluid">
-
-			{{#each loop _id}}
-
-
-				{{> subnote}}
-
-	
-			{{/each}}
-
+	<div class="container-fluid no-margins">
+		{{#each loop _id}}
+			{{> subnote}}
+		{{/each}}
 	</div>
-
 	{{/with}}
 </template>

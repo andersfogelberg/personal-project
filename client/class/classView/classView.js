@@ -14,54 +14,30 @@ Template.courseView.helpers ({
     	}
   	},
 
-  	'loop': function(itemId){
-    	let id = itemId;
-      	let sections = [];
-      	for(i=0; i<Items.find({'type':"section"},{'parent':itemId}).count();i++){
-        	id = Items.findOne({'_id':id}).children.section;
-          		sections.push(Items.findOne({'_id':id}));
-     	}
-      	return sections;
-    },
+  'loop': function(itemId){
+    let id = itemId;
+    let sections = [];
+    for(i=0; i<Items.find({'type':"section"},{'parent':itemId}).count();i++){
+      if(Items.findOne({'_id':id}).children.section != null){
+        id = Items.findOne({'_id':id}).children.section;
+        sections.push(Items.findOne({'_id':id}));
+      }
+    }
+    return sections;
+  },
 
-/*	loop(){ 
-
-		let pointer = Items.findOne({'_id':this});
-  		console.log(Items.find());
-  		let sections = [pointer];
-  		for(i=0; i<Items.find({'type':"section"}).count();i++){
-  			if( typeof Items.findOne({'_id': pointer._id}) != 'undefined'){
-  				pointer = Items.findOne({'_id':pointer._id}).children.section;
-  				sections.push(Items.findOne({'_id':pointer}));
-  				console.log('poointer' + pointer);
-  			}
-  			console.log('loop test');
-
-  		}
-  		console.log(sections);
-  		return sections;
-  	},*/
-
-
-
-/*  	log(){
-  		console.log(this);
-  		return this;
-  	},*/
-
-
-  	
-
-/*  	child( item ){
-  		let id = Items.findOne({'_id':item}).children.section;
-  		let child = Items.findOne({'_id': id});
-  		if (child) {
-  			return child;
-  		}
-
-  	}*/
-
-
+  'isNotUserClass': function(){
+    let userClasses = Profiles.findOne({'userId': Meteor.userId()}).classes;
+    let val = true;
+    for(let i=0;i<userClasses.length;i++){
+      console.log(userClasses[i]);
+      console.log(Router.current().params.courseId);
+      if(userClasses[i] === Router.current().params.courseId){
+        val = false;
+      }
+    }
+    return val;
+  },
 
 });
 Template.courseView.events({

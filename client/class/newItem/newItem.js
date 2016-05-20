@@ -8,10 +8,46 @@ Template.newItem.helpers({
     console.log(this);
     return this;
   },
-  typeIs(){
+  typeIsClass(){
     console.log(this.type);
-    return this.type;
-  }
+    if(this.type == 'class'){
+      return true;
+    } else {
+      return false;
+    }
+  },
+  typeIsSection(){
+    console.log(this.type);
+    if(this.type == 'section'){
+      return true;
+    } else {
+      return false;
+    }
+  },
+  typeIsSubsection(){
+    console.log(this.type);
+    if(this.type == 'subsection'){
+      return true;
+    } else {
+      return false;
+    }
+  },
+  typeIsNote(){
+    console.log(this.type);
+    if(this.type == 'note'){
+      return true;
+    } else {
+      return false;
+    }
+  },
+  typeIsSubnote(){
+    console.log(this.type);
+    if(this.type == 'subnote'){
+      return true;
+    } else {
+      return false;
+    }
+  },
 });
 
 
@@ -30,7 +66,7 @@ Template.newItem.events({
       'type' : "section",
       'name' : sectionName,
       'content' : sectionContent,
-      'parent' : Router.current().params.courseId,
+      'parent' : this._id,
       'createdBy' : Meteor.userId()
     }
 

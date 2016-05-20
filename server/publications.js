@@ -39,13 +39,18 @@ Meteor.publish('item', function( id ){
 });
 
 Meteor.publish('profiles', function(){
-		return Profiles.find();
+	return Profiles.find();
 });
 
 Meteor.publish('profile', function(userId){
 	return Profiles.findOne({'userId':userId});
 });
 
-/*Meteor.publish('user', function(){
-	return users.find({'_id':this.userId()});
-});*/
+Meteor.publish('comments', function(){
+	return Comments.find();
+});
+
+Meteor.publish('users', function(){
+	let cursor = Meteor.users.find({}, {fields: {'emails': 1}});
+	return cursor;
+});

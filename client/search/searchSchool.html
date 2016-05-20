@@ -2,13 +2,21 @@
 	<nav>{{ >yield "navbar"}}</nav>
 	<div class="schoolSearch container-fluid">
 		<div class="row">
-				<div class="col-sm-12">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-11">
+				<h3>Schools:</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"></div>
+				<div class="col-sm-11">
 					<a class="newClass" href="../newSchoolForm"><h5>+AddSchool+</h5></a>
 				</div>
 		</div>
 		<div class="row">
 			{{#each schools}}
-				<div class="col-sm-12">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-11">
 					{{#with this}}
 					<a href="./searchClasses/{{_id}}"><h5>{{name}}</h5></a>
 					{{/with}}
